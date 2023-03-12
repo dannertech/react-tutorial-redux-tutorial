@@ -5,9 +5,9 @@ import {useDispatch} from 'react-redux';
 
 const CartItem = ({id, img, title, price, amount}) => {
     const dispatch = useDispatch();
-    const {addCartItem} = actions;
+    const {addCartItem, deleteCartItem} = actions;
 
-    console.log(addCartItem);
+ 
     return (
         <article className='cart-item'>
             <img src={img} alt="Image of cellphone"/>
@@ -17,11 +17,11 @@ const CartItem = ({id, img, title, price, amount}) => {
                 <button className='remove-btn'>Remove</button>
             </div>
             <div>
-                <button className='amount-btn'>
+                <button className='amount-btn' onClick={() => dispatch(addCartItem(id))}>
                     <ChevronUp />
                 </button>
                 <p className='amount'>{amount}</p>
-                <button className='amount-btn'>
+                <button className='amount-btn' onClick={() => dispatch(deleteCartItem(id))}>
                     <ChevronDown />
                 </button>
             </div>
