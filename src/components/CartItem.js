@@ -1,9 +1,15 @@
 import React from 'react';
 import {ChevronDown, ChevronUp} from '../icons';
+import {actions} from '../features/cart/cartSlice.js';
+import {useDispatch} from 'react-redux';
 
 const CartItem = ({id, img, title, price, amount}) => {
+    const dispatch = useDispatch();
+    const {addCartItem} = actions;
+
+    console.log(addCartItem);
     return (
-        <article>
+        <article className='cart-item'>
             <img src={img} alt="Image of cellphone"/>
             <div>
                 <h4>{title}</h4>

@@ -4,7 +4,7 @@ import {CartIcon} from '../icons';
 
 const Navbar = () => {
     const amount = useSelector((store) => store.cart.amount)
-    console.log(amount)
+   
     return (
         <nav>
             <div className='nav-center'>
