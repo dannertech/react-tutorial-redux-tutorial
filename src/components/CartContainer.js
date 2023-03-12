@@ -16,9 +16,26 @@ const CartContainer = () => {
         )
     }
     return(
-        <div>
-            CartContainer
-        </div>
+        <section className='cart'>
+            <header>
+                <h2>Your Bag</h2>
+            </header>
+            <div>
+                    {cartItems.map((item) => {
+                        return (
+                            <CartItem {...item} key={item.id} />
+                        )
+                    })}
+                </div>
+                <footer>
+                    <hr />
+                    <div className='cart-total'>
+                        <h4>
+                            Total <span>${total}</span>
+                        </h4>
+                    </div>
+                </footer>
+        </section>
     )
 };
 
