@@ -6,7 +6,7 @@ import CartItem
 
 const CartContainer = () => {
     const {amount, total, cartItems} = useSelector((store) => store.cart);
-    const {calculateTotal} = actions;
+    const {calculateTotal, clearCart} = actions;
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(calculateTotal())
@@ -40,6 +40,9 @@ const CartContainer = () => {
                             Total <span>${total}</span>
                         </h4>
                     </div>
+                    <button onClick={() => dispatch(clearCart())} className='btn clear-btn'>
+                        Clear Cart
+                    </button>
                 </footer>
         </section>
     )
