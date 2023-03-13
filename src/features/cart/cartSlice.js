@@ -21,6 +21,8 @@ const cartSlice = createSlice({
         addCartItem: (state, action) => {
             let item = state.cartItems.filter((item) => item.id == action.payload);
             item[0].amount += 1;
+
+            state.amount += 1;
         },
         deleteCartItem: (state, action) => {
             let item = state.cartItems.filter((item) => item.id == action.payload);
@@ -28,6 +30,7 @@ const cartSlice = createSlice({
                 item[0].amount = 0;
             } else {
                 item[0].amount -= 1;
+                state.amount -= 1;
             }
         },
         calculateTotal: (state, action) => {
