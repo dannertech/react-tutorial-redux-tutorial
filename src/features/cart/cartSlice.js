@@ -32,16 +32,19 @@ const cartSlice = createSlice({
         },
         calculateTotal: (state, action) => {
             let total = 0;
-
             for(let i = 0; i < state.cartItems.length; i++){
                 let itemTotal = state.cartItems[i].amount * state.cartItems[i].price;
-                
                 console.log(itemTotal);
                 total += itemTotal;
             }
             state.total = total;
-
-            console.log(state.total);
+        },
+        removeItem: (state, action) => {
+            let filteredArray = [];
+            for(let i = 0; i < state.cartItems.length; i++){
+                filteredArray = state.cartItems.filter((item) => item.id != action.payload)
+            }
+            state.cartItems = filteredArray;
         }
     }
 });
