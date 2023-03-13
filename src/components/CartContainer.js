@@ -1,10 +1,16 @@
-import React from 'react';
-import {useSelector} from 'react-redux';
+import React, {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import {actions} from '../features/cart/cartSlice';
 import CartItem
  from './CartItem';
 
 const CartContainer = () => {
     const {amount, total, cartItems} = useSelector((store) => store.cart);
+    const {calculateTotal} = actions;
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(calculateTotal())
+    })
     if(amount < 1){
         return (
             <section className='cart'>
